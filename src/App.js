@@ -1,19 +1,19 @@
-import { useCallback, useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 import Calculator from "./Calculator";
 import ToggleSounds from "./ToggleSounds";
 import Time from "./Time";
 
+function formatTime(date) {
+  return new Intl.DateTimeFormat("en", {
+    month: "short",
+    year: "2-digit",
+    hour: "2-digit",
+    minute: "2-digit",
+    second: "2-digit",
+  }).format(date);
+}
 function App() {
   const [allowSound, setAllowSound] = useState(true);
-  const formatTime = useCallback(function formatTime(date) {
-    return new Intl.DateTimeFormat("en", {
-      month: "short",
-      year: "2-digit",
-      hour: "2-digit",
-      minute: "2-digit",
-      second: "2-digit",
-    }).format(date);
-  }, []);
 
   const [time, setTime] = useState(formatTime(new Date()));
 
